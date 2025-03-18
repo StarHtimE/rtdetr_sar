@@ -22,13 +22,19 @@ ResNet_cfg = {
     # 152: [3, 8, 36, 3],
 }
 
-
-donwload_url = {
-    18: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet18_vd_pretrained_from_paddle.pth',
-    34: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet34_vd_pretrained_from_paddle.pth',
-    50: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet50_vd_ssld_v2_pretrained_from_paddle.pth',
-    101: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet101_vd_ssld_pretrained_from_paddle.pth',
+ckpt_path = {
+    18: 'src/nn/backbone/ckpt/ResNet18_vd_pretrained_from_paddle.pth',
+    34: 'src/nn/backbone/ckpt/ResNet34_vd_pretrained_from_paddle.pth',
+    50: 'src/nn/backbone/ckpt/ResNet50_vd_ssld_v2_pretrained_from_paddle.pth',
+    101: 'src/nn/backbone/ckpt/ResNet101_vd_ssld_pretrained_from_paddle.pth',
 }
+
+# donwload_url = {
+#     18: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet18_vd_pretrained_from_paddle.pth',
+#     34: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet34_vd_pretrained_from_paddle.pth',
+#     50: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet50_vd_ssld_v2_pretrained_from_paddle.pth',
+#     101: 'https://github.com/lyuwenyu/storage/releases/download/v0.1/ResNet101_vd_ssld_pretrained_from_paddle.pth',
+# }
 
 
 class BasicBlock(nn.Module):
@@ -194,7 +200,8 @@ class PResNet(nn.Module):
             self._freeze_norm(self)
 
         if pretrained:
-            state = torch.hub.load_state_dict_from_url(donwload_url[depth])
+            # state = torch.hub.load_state_dict_from_url(donwload_url[depth])
+            state = torch.load(ckpt_path[depth])
             self.load_state_dict(state)
             print(f'Load PResNet{depth} state_dict')
             

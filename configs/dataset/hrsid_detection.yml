@@ -1,0 +1,33 @@
+task: detection
+
+num_classes: 1
+
+train_dataloader: 
+  type: DataLoader
+  dataset: 
+    type: HRSIDDetection
+    img_folder: data/HRSID/train/
+    ann_file: data/HRSID/annotations/train.json
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  batch_size: 2
+  num_workers: 2
+  drop_last: True 
+
+
+val_dataloader:
+  type: DataLoader
+  dataset: 
+    type: HRSIDDetection
+    img_folder: data/HRSID/val/
+    ann_file: data/HRSID/annotations/val.json
+    transforms:
+      type: Compose
+      ops: ~ 
+
+  shuffle: False
+  batch_size: 2
+  num_workers: 2
+  drop_last: False

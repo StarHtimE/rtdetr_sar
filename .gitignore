@@ -1,0 +1,7 @@
+HRSID/
+output/
+cache/
+
+*.pyc
+*.log
+*.pth

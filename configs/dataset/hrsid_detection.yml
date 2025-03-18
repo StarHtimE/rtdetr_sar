@@ -1,6 +1,6 @@
 task: detection
 
-num_classes: 1
+num_classes: 2 # 0 for background, 1 for object
 
 train_dataloader: 
   type: DataLoader
@@ -12,8 +12,8 @@ train_dataloader:
       type: Compose
       ops: ~
   shuffle: True
-  batch_size: 2
-  num_workers: 2
+  batch_size: 8
+  num_workers: 4
   drop_last: True 
 
 
@@ -28,6 +28,6 @@ val_dataloader:
       ops: ~ 
 
   shuffle: False
-  batch_size: 2
-  num_workers: 2
+  batch_size: 8
+  num_workers: 4
   drop_last: False

@@ -99,7 +99,7 @@ class ConvertHRSIDPolysToMask(object):
         boxes[:, 1::2].clamp_(min=0, max=h)
 
         # HRSID只有一个类别："ship"，类别ID为1
-        classes = [obj["category_id"] - 1 for obj in anno]
+        classes = [obj["category_id"] for obj in anno]
         classes = torch.tensor(classes, dtype=torch.int64) 
 
         if self.return_masks:
@@ -145,5 +145,5 @@ class ConvertHRSIDPolysToMask(object):
 
 # HRSID数据集类别映射
 hrsid_category2name = {
-    0: 'ship'
+    1: 'ship'
 }

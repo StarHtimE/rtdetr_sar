@@ -7,7 +7,7 @@ RTDETR-SAR 是一个用于SAR（合成孔径雷达）图像中舰船目标检测
 
 - src 目录：核心源代码
 
-  - core：包含基础组件，如 config, yaml_config, yaml_utils
+  - core：包含基础组件，如 config, yaml_config, yaml_utils， 其中 yamk_utils 包含 register
   - data：数据加载和处理
   - coco：基于COCO格式的数据集实现，主要使用 HRSID 舰船数据集
   - misc：辅助工具，如 logger, visualizer

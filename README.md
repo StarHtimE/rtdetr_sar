@@ -7,7 +7,7 @@ RTDETR-SAR 是一个用于SAR（合成孔径雷达）图像中舰船目标检测
 
 - src 目录：核心源代码
 
-  - core：包含基础组件，如注册器（register）
+  - core：包含基础组件，如 config, yaml_config, yaml_utils
   - data：数据加载和处理
   - coco：基于COCO格式的数据集实现，主要使用 HRSID 舰船数据集
   - misc：辅助工具，如 logger, visualizer
@@ -16,8 +16,13 @@ RTDETR-SAR 是一个用于SAR（合成孔径雷达）图像中舰船目标检测
   - solver：训练和评估引擎
     - det_engine.py：训练和评估的核心函数
     - det_solver.py：封装训练评估流程的求解器类
-  - zoo：模型库
-    - rtdetr：RT-DETR模型的实现，包括 hybrid_encoder 等
+  - zoo：模型库，主要 包括 RT-DETR 模型的实现
+    - rt_detr: RT-DETR 的整体结构
+    - hybrid_encoder: 一个高效的混合编码器，包括 AIFI 模块和 CCFM 模块。
+    - rtdetr_decoder: RT-DETR 的解码器
+    - denoising: 去噪查询机制，继承自 DINO
+    - matcher: Hungarian 匹配
+    - rtdetr_postprocessor: RT-DETR 的后处理组件
 - data 目录：数据集
 
   HRSID：高分辨率SAR船只检测数据集

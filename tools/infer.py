@@ -106,8 +106,8 @@ def draw(images, labels, boxes, scores, thrh = 0.6, path = ""):
         box = boxes[i][scr > thrh]
         scrs = scores[i][scr > thrh]
         for j,b in enumerate(box):
-            draw.rectangle(list(b), outline='red',)
-            draw.text((b[0], b[1]), text=f"label: {lab[j].item()} {round(scrs[j].item(),2)}", font=ImageFont.load_default(), fill='blue')
+            draw.rectangle(list(b), outline=(0, 191, 255), width=2)
+            # draw.text((b[0], b[1]), text=f"label: {lab[j].item()} {round(scrs[j].item(),2)}", font=ImageFont.load_default(), fill='blue')
         if path == "":
             im.save(f'results_{i}.jpg')
         else:
